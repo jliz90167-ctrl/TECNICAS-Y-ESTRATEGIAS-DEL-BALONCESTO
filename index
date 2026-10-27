@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏀 Técnicas y Estrategias de Baloncesto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), 
+                        url('https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1600&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #f1f5f9;
+            line-height: 1.7;
+        }
+        header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #f97316;
+            text-shadow: 0 0 20px rgba(249, 115, 22, 0.4);
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        nav {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid rgba(249, 115, 22, 0.3);
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #f97316;
+            color: white;
+        }
+        section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            color: #fbbf24;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f97316;
+            padding-bottom: 0.5rem;
+        }
+        h3 {
+            color: #f97316;
+            margin: 1.2rem 0 0.6rem;
+            font-size: 1.2rem;
+        }
+        .intro {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .niveles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .nivel-card {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 1.8rem;
+            border-radius: 10px;
+            border-top: 4px solid #f97316;
+            transition: transform 0.3s;
+        }
+        .nivel-card:hover {
+            transform: translateY(-5px);
+        }
+        .nivel-card h3 {
+            font-size: 1.4rem;
+        }
+        .pasos {
+            counter-reset: paso;
+        }
+        .paso-item {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            padding-left: 4rem;
+            position: relative;
+        }
+        .paso-item::before {
+            counter-increment: paso;
+            content: counter(paso);
+            position: absolute;
+            left: 1.2rem;
+            top: 1.2rem;
+            background: #f97316;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .ejercicio-card, .tecnica-card, .beneficio-card, .material-card, .juego-card {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .juego-card {
+            text-align: left;
+            border-left: 4px solid #fbbf24;
+            margin-bottom: 2rem;
+        }
+        .ejercicio-card span, .tecnica-card span, .beneficio-card span, .material-card span {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        li {
+            margin-bottom: 0.6rem;
+        }
+        .consejos-lista, .errores-lista, .seguridad-lista {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 1.8rem;
+            border-radius: 10px;
+        }
+        .consejos-lista li::marker { content: "✅ "; }
+        .errores-lista li::marker { content: "❌ "; }
+        .seguridad-lista li::marker { content: "🛡️ "; }
+        .cierre {
+            text-align: center;
+            background: rgba(120, 53, 15, 0.4);
+            padding: 3rem;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            color: #fbbf24;
+            margin-top: 2rem;
+        }
+        .contacto {
+            background: rgba(30, 41, 59, 0.7);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .contacto-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+        .contacto-item strong {
+            display: block;
+            color: #f97316;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.5);
+            color: #94a3b8;
+            margin-top: 2rem;
+        }
+        .btn {
+            background: #f97316;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            margin: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .btn:hover {
+            background: #fb923c;
+            transform: scale(1.05);
+        }
+        .btn-verdadero { background: #22c55e; }
+        .btn-verdadero:hover { background: #4ade80; }
+        .btn-falso { background: #ef4444; }
+        .btn-falso:hover { background: #f87171; }
+        .resultado {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+        .correcto {
+            background: rgba(34, 197, 94, 0.2);
+            color: #4ade80;
+            border: 2px solid #22c55e;
+        }
+        .incorrecto {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            border: 2px solid #ef4444;
+        }
+        .puntuacion {
+            font-size: 1.3rem;
+            color: #fbbf24;
+            margin: 1rem 0;
+        }
+        .opcion {
+            display: block;
+            width: 100%;
+            text-align: left;
+            margin: 0.5rem 0;
+        }
+        input[type="text"] {
+            padding: 0.6rem;
+            width: 250px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            background: #1e293b;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🏀 Técnicas y Estrategias de Baloncesto</h1>
+    <p>Aprende a jugar paso a paso, conoce las principales técnicas, estrategias, beneficios y medidas de seguridad para practicar baloncesto.</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#aprender">¿Cómo aprender?</a></li>
+        <li><a href="#niveles">Niveles</a></li>
+        <li><a href="#pasos">Pasos</a></li>
+        <li><a href="#ejercicios">Ejercicios</a></li>
+        <li><a href="#tecnicas">Técnicas</a></li>
+        <li><a href="#beneficios">Beneficios</a></li>
+        <li><a href="#consejos">Consejos</a></li>
+        <li><a href="#materiales">Materiales</a></li>
+        <li><a href="#seguridad">Seguridad</a></li>
+        <li><a href="#juegos">🎮 Juegos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+    </ul>
+</nav>
+
+<section id="aprender">
+    <h2>¿Cómo pueden aprender a jugar baloncesto?</h2>
+    <div class="intro">
+        <p>Un aprendizaje progresivo, seguro y divertido</p>
+        <br>
+        <p>Aprender a jugar baloncesto es un proceso que requiere tiempo, práctica, paciencia y confianza. Cada persona puede aprender a su propio ritmo, por lo que es importante comenzar con ejercicios sencillos y avanzar progresivamente.</p>
+        <br>
+        <p>El aprendizaje comienza con la familiarización con el balón y el espacio de juego. Después se trabajan habilidades como el bote, el pase, el tiro y la defensa.</p>
+        <br>
+        <p>Cuando se dominan las habilidades básicas, se pueden aprender diferentes estrategias de juego y posiciones en la cancha. Durante todo el proceso es importante practicar en lugares adecuados y contar con la supervisión de una persona responsable o un entrenador.</p>
+    </div>
+</section>
+
+<section id="niveles">
+    <h2>Programas de aprendizaje</h2>
+    <p>Diferentes etapas para desarrollar habilidades en la cancha</p>
+    
+    <div class="niveles">
+        <div class="nivel-card">
+            <h3>1. Principiante</h3>
+            <p>Familiarización con el balón, posiciones básicas, bote estático y pase contra una pared. Conocimiento de las reglas básicas del juego.</p>
+        </div>
+        <div class="nivel-card">
+            <h3>2. Intermedio</h3>
+            <p>Desarrollo del bote en movimiento, tiro al aro, defensa individual y juego en equipo. Aprendizaje de diferentes posiciones.</p>
+        </div>
+        <div class="nivel-card">
+            <h3>3. Avanzado</h3>
+            <p>Perfeccionamiento de la técnica, estrategias de ataque y defensa, resistencia física, coordinación y trabajo en equipo.</p>
+        </div>
+    </div>
+</section>
+
+<section id="pasos">
+    <h2>8 pasos para aprender a jugar baloncesto</h2>
+    <p>Avanza poco a poco y desarrolla cada habilidad</p>
+    
+    <div class="pasos">
+        <div class="paso-item">
+            <h3>Familiarizarse con el balón</h3>
+            <p>Acostumbrarse progresivamente al tamaño y peso del balón, practicar toques y agarres con ambas manos.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Aprender el bote</h3>
+            <p>Controlar el balón botándolo con una mano a la vez, manteniendo la cabeza levantada y protegiéndolo con el cuerpo.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Aprender los pases</h3>
+            <p>Conocer los tipos principales: pase de pecho, de pique y por encima de la cabeza. Mira siempre a tu compañero al pasar.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Aprender el tiro</h3>
+            <p>Conocer la postura correcta: pies al ancho de hombros, rodillas flexionadas, lanzamiento con suavidad y seguimiento del brazo.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Posición defensiva</h3>
+            <p>Rodillas flexionadas, cuerpo bajo, brazos activos y siempre entre tu rival y el aro.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Coordinar los movimientos</h3>
+            <p>Unir bote, pase y tiro en secuencias fluidas y tomar decisiones rápidas durante el juego.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Aprender posiciones</h3>
+            <p>Conocer las funciones del base, escolta, alero, pívot y ala-pívot en la cancha.</p>
+        </div>
+        <div class="paso-item">
+            <h3>Mejorar con la práctica</h3>
+            <p>La práctica constante permite mejorar la resistencia, coordinación y confianza en cada jugada.</p>
+        </div>
+    </div>
+</section>
+
+<section id="ejercicios">
+    <h2>Ejercicios básicos</h2>
+    <p>Actividades que ayudan a desarrollar las habilidades necesarias para jugar</p>
+    
+    <div class="grid-4">
+        <div class="ejercicio-card">
+            <span>✋</span>
+            <h4>Bote</h4>
+            <p>Controlar el balón con cada mano, caminando y luego corriendo, sin mirarlo siempre.</p>
+        </div>
+        <div class="ejercicio-card">
+            <span>🤲</span>
+            <h4>Pase</h4>
+            <p>Enviar y recibir el balón con precisión a compañeros, usando diferentes tipos de pase.</p>
+        </div>
+        <div class="ejercicio-card">
+            <span>🎯</span>
+            <h4>Tiro</h4>
+            <p>Lanzar el balón al aro con buena postura, equilibrio y seguimiento del movimiento.</p>
+        </div>
+        <div class="ejercicio-card">
+            <span>🛡️</span>
+            <h4>Defensa</h4>
+            <p>Mantenerse frente al rival, sin cometer faltas, impidiendo que avance o tire con facilidad.</p>
+        </div>
+    </div>
+</section>
+
+<section id="tecnicas">
+    <h2>Principales técnicas de baloncesto</h2>
+    <p>Conoce los movimientos fundamentales del juego</p>
+    
+    <div class="grid-4">
+        <div class="tecnica-card">
+            <span>🎯</span>
+            <h4>Triple</h4>
+            <p>Lanzamiento desde fuera de la línea de tres puntos. Vale 3 puntos y requiere buena técnica y distancia.</p>
+        </div>
+        <div class="tecnica-card">
+            <span>🏃</span>
+            <h4>Entrada a canasta</h4>
+            <p>Avanza directo al aro rival con el balón. Da un paso largo y protege el balón con el cuerpo.</p>
+        </div>
+        <div class="tecnica-card">
+            <span>🤲</span>
+            <h4>Pase de pecho</h4>
+            <p>Enviar el balón directamente al pecho del compañero. Es el pase más rápido y seguro.</p>
+        </div>
+        <div class="tecnica-card">
+            <span>🛡️</span>
+            <h4>Defensa</h4>
+            <p>Impide que el rival reciba o avance con el balón. Mantente entre él y el aro.</p>
+        </div>
+        <div class="tecnica-card">
+            <span>📦</span>
+            <h4>Rebote</h4>
+            <p>Recuperar el balón tras un tiro fallado. Posiciónate antes que el rival y salta con fuerza.</p>
+        </div>
+        <div class="tecnica-card">
+            <span>✋</span>
+            <h4>Tapón</h4>
+            <p>Desviar el balón cuando el rival lanza. Salta vertical y toca solo el balón, no al jugador.</p>
+        </div>
+    </div>
+</section>
+
+<section id="beneficios">
+    <h2>Beneficios del baloncesto</h2>
+    <p>El baloncesto contribuye al bienestar físico y mental</p>
+    
+    <div class="grid-4">
+        <div class="beneficio-card">
+            <span>💪</span>
+            <h4>Fortalece el cuerpo</h4>
+            <p>Trabaja diferentes grupos musculares y ayuda a mejorar la condición física general.</p>
+        </div>
+        <div class="beneficio-card">
+            <span>❤️</span>
+            <h4>Salud cardiovascular</h4>
+            <p>Es un deporte de movimiento continuo que fortalece el corazón y mejora la resistencia.</p>
+        </div>
+        <div class="beneficio-card">
+            <span>🧠</span>
+            <h4>Agilidad mental</h4>
+            <p>Mejora la concentración, toma de decisiones rápida y anticipación en el juego.</p>
+        </div>
+        <div class="beneficio-card">
+            <span>🤝</span>
+            <h4>Trabajo en equipo</h4>
+            <p>Fomenta la cooperación, comunicación y respeto con compañeros y contrarios.</p>
+        </div>
+        <div class="beneficio-card">
+            <span>🏃</span>
+            <h4>Agilidad y velocidad</h4>
+            <p>Mejora la capacidad de moverse rápido, cambiar de dirección y reaccionar.</p>
+        </div>
+        <div class="beneficio-card">
+            <span>😊</span>
+            <h4>Confianza y disciplina</h4>
+            <p>Ayuda a superar retos, respetar reglas y desarrollar autoestima y constancia.</p>
+        </div>
+    </div>
+</section>
+
+<section id="consejos">
+    <h2>Consejos para aprender mejor</h2>
+    <ul class="consejos-lista">
+        <li>Practicar de forma constante y progresiva</li>
+        <li>Mantener la calma y no frustrarse al fallar</li>
+        <li>Escuchar las indicaciones del entrenador</li>
+        <li>Realizar calentamiento antes de jugar y estiramientos al terminar</li>
+        <li>Conocer y respetar las reglas del juego</li>
+        <li>Comunicarse siempre con los compañeros</li>
+        <li>No intentar ejercicios demasiado difíciles sin preparación</li>
+        <li>Pedir ayuda cuando sea necesario</li>
+    </ul>
+    
+    <br>
+    <h3>Errores comunes al aprender</h3>
+    <ul class="errores-lista">
+        <li><strong>Mirar siempre el balón:</strong> debes acostumbrarte a botar sin mirarlo para ver el juego completo.</li>
+        <li><strong>Querer aprender demasiado rápido:</strong> respeta tu proceso y avanza paso a paso, no te saltes etapas.</li>
+        <li><strong>No usar ambas manos:</strong> practica con la mano hábil y la menos hábil por igual para ser completo.</li>
+        <li><strong>Olvidar la defensa:</strong> el baloncesto se juega en los dos lados de la cancha, todos defienden.</li>
+        <li><strong>No practicar regularmente:</strong> la constancia es la clave para mejorar cualquier habilidad.</li>
+    </ul>
+</section>
+
+<section id="materiales">
+    <h2>Materiales para la práctica</h2>
+    <p>Elementos que pueden utilizarse durante el entrenamiento</p>
+    
+    <div class="grid-4">
+        <div class="material-card">
+            <span>🏀</span>
+            <h4>Balón</h4>
+            <p>Del tamaño adecuado según la edad y categoría. Mantén la presión correcta.</p>
+        </div>
+        <div class="material-card">
+            <span>👟</span>
+            <h4>Zapatillas</h4>
+            <p>Con buen agarre y sujeción del tobillo para prevenir lesiones y mejorar el desplazamiento.</p>
+        </div>
+        <div class="material-card">
+            <span>👕</span>
+            <h4>Ropa deportiva</h4>
+            <p>Cómoda y transpirable que permita libertad de movimiento sin restricciones.</p>
+        </div>
+        <div class="material-card">
+            <span>🎒</span>
+            <h4>Equipo adicional</h4>
+            <p>Conos, chalecos, botiquín y agua para mantenerse hidratado durante cada sesión.</p>
+        </div>
+    </div>
+</section>
+
+<section id="seguridad">
+    <h2>Seguridad y recomendaciones</h2>
+    <p>La seguridad debe ser una prioridad durante la práctica</p>
+    
+    <ul class="seguridad-lista">
+        <li><strong>Calentamiento:</strong> Siempre antes de empezar para preparar músculos y articulaciones y evitar lesiones.</li>
+        <li><strong>Conocer las reglas:</strong> Saber lo que está permitido y lo que no ayuda a jugar con seguridad y respeto.</li>
+        <li><strong>Respetar al contrario:</strong> Jugar limpio es fundamental para evitar accidentes y disfrutar del deporte.</li>
+        <li><strong>No jugar con dolor:</strong> Si te lastimas, avisa al entrenador y descansa. No fuerces lesiones.</li>
+        <li><strong>Hidratación:</strong> Bebe agua antes, durante y después del juego para mantener un buen rendimiento.</li>
+        <li><strong>Supervisión:</strong> Los principiantes deben practicar siempre con un entrenador o persona responsable.</li>
+    </ul>
+</section>
+
+<section id="juegos">
+    <h2>🎮 Juegos Interactivos — ¡Aprende divirtiéndote!</h2>
+
+    <div class="juego-card">
+        <h3>✅❌ Juego 1: Verdadero o Falso</h3>
+        <p>Haz clic en la respuesta correcta</p>
+        <div class="puntuacion">Puntos: <span id="puntos-vf">0</span> / 5</div>
+        
+        <p><strong>1. Debes mirar siempre el balón al botarlo</strong></p>
+        <button class="btn btn-verdadero" onclick="respuestaVF(0, 'V')">✅ Verdadero</button>
+         <button class="btn btn-falso" onclick="respuestaVF(0, 'F')">❌ Falso</button>
+         <div id="res-vf-0" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>2. Es importante calentar antes de jugar</strong></p>
+         <button class="btn btn-verdadero" onclick="respuestaVF(1, 'V')">✅ Verdadero</button>
+         <button class="btn btn-falso" onclick="respuestaVF(1, 'F')">❌ Falso</button>
+         <div id="res-vf-1" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>3. Solo se usa una mano para botar</strong></p>
+         <button class="btn btn-verdadero" onclick="respuestaVF(2, 'V')">✅ Verdadero</button>
+         <button class="btn btn-falso" onclick="respuestaVF(2, 'F')">❌ Falso</button>
+         <div id="res-vf-2" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>4. El baloncesto es un deporte individual</strong></p>
+         <button class="btn btn-verdadero" onclick="respuestaVF(3, 'V')">✅ Verdadero</button>
+         <button class="btn btn-falso" onclick="respuestaVF(3, 'F')">❌ Falso</button>
+         <div id="res-vf-3" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>5. Hay 5 jugadores por equipo en la cancha</strong></p>
+         <button class="btn btn-verdadero" onclick="respuestaVF(4, 'V')">✅ Verdadero</button>
+         <button class="btn btn-falso" onclick="respuestaVF(4, 'F')">❌ Falso</button>
+         <div id="res-vf-4" class="resultado"></div>
+         <br>
+         <button class="btn" onclick="reiniciarVF()">🔄 Reiniciar Juego</button>
+     </div>
+     <div class="juego-card">
+         <h3>📝 Juego 2: Elige la respuesta correcta</h3>
+         <p>Haz clic en la opción que creas correcta</p>
+         <div class="puntuacion">Puntos: <span id="puntos-sm">0</span> / 4</div>
+         <p><strong>1. ¿Cuántos puntos vale un tiro dentro del área?</strong></p>
+         <button class="btn opcion" onclick="respuestaSM(0, 'A')">A) 1 punto</button>
+         <button class="btn opcion" onclick="respuestaSM(0, 'B')">B) 2 puntos</button>
+         <button class="btn opcion" onclick="respuestaSM(0, 'C')">C) 3 puntos</button>
+         <div id="res-sm-0" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>2. ¿Cuánto tiempo tienes para sacar de banda?</strong></p>
+         <button class="btn opcion" onclick="respuestaSM(1, 'A')">A) 5 segundos</button>
+         <button class="btn opcion" onclick="respuestaSM(1, 'B')">B) 10 segundos</button>
+         <button class="btn opcion" onclick="respuestaSM(1, 'C')">C) 15 segundos</button>
+         <div id="res-sm-1" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>3. ¿Cuál es el objetivo del juego?</strong></p>
+         <button class="btn opcion" onclick="respuestaSM(2, 'A')">A) Correr mucho</button>
+         <button class="btn opcion" onclick="respuestaSM(2, 'B')">B) Anotar más puntos que el rival</button>
+         <button class="btn opcion" onclick="respuestaSM(2, 'C')">C) Solo divertirse</button>
+         <div id="res-2" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>4. ¿Quién gana el partido?</strong></p>
+         <button class="btn opcion" onclick="respuestaSM(3, 'A')">A) El que corre más rápido</button>
+         <button class="btn opcion" onclick="respuestaSM(3, 'B')">B) El que anota más puntos</button>
+         <button class="btn opcion" onclick="respuestaSM(3, 'C')">C) El que tiene más jugadores</button>
+         <div id="res-sm-3" class="resultado"></div>
+         <br>
+         <button class="btn" onclick="reiniciarSM()">🔄 Reiniciar Juego</button>
+     </div>
+     <div class="juego-card">
+         <h3>🧠 Juego 3: Adivina la palabra</h3>
+         <p>Lee la pista y escribe tu respuesta 👇</p>
+         
+         <p><strong>Pista 1:</strong> Golpear el balón contra el suelo con una mano</p>
+         <input type="text" id="adivina1" placeholder="Escribe aquí...">
+         <button class="btn" onclick="verificarAdivina(0)">✅ Comprobar</button>
+         <div id="res-adi-0" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>Pista 2:</strong> Enviar el balón a un compañero</p>
+         <input type="text" id="adivina2" placeholder="Escribe aquí...">
+         <button class="btn" onclick="verificarAdivina(1)">✅ Comprobar</button>
+         <div id="res-adi-1" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>Pista 3:</strong> Lanzar el balón al aro para anotar</p>
+         <input type="text" id="adivina3" placeholder="Escribe aquí...">
+         <button class="btn" onclick="verificarAdivina(2)">✅ Comprobar</button>
+         <div id="res-adi-2" class="resultado"></div>
+         <p style="margin-top: 1rem;"><strong>Pista 4:</strong> Estructura donde se anotan los puntos</p>
+         <input type="text" id="adivina4" placeholder="Escribe aquí...">
+         <button class="btn" onclick="verificarAdivina(3)">✅ Comprobar</button>
+         <div id="res-adi-3" class="resultado"></div>
+     </div>
+     <div class="intro" style="background: rgba(251, 191, 36, 0.1); border-left: 4px solid #fbbf24; text-align: center;">
+         <h3>🏆 ¡Felicitaciones por jugar!</h3>
+         <p>Lo más importante no es ganar, sino aprender, divertirse y mejorar poco a poco. ¡Disfruta cada momento en la cancha! 🏀😊</p>
+     </div>
+ </section>
+ <section>
+     <div class="cierre">
+         <h2>El baloncesto es para todos</h2>
+         <p>Aprende, practica y disfruta del baloncesto siempre de manera segura y con respeto. ¡El esfuerzo también es talento!</p>
+     </div>
+ </section>
+ <section id="contacto" class="contacto">
+     <h2>Contáctanos</h2>
+     <p><strong>Técnicas y Estrategias de Baloncesto</strong> — Aprende jugando</p>
+     
+     <div class="contacto-grid">
+         <div class="contacto-item">
+             <strong>📍 Ubicación</strong>
+             <p>Sucre, Bolivia<br>Cancha Polideportiva</p>
+         </div>
+         <div class="contacto-item">
+             <strong>📱 Teléfono</strong>
+             <p>+591 74407757</p>
+         </div>
+         <div class="contacto-item">
+             <strong>💬 WhatsApp</strong>
+             <p>+591 74407757</p>
+         </div>
+         <div class="contacto-item">
+             <strong>📧 Correo</strong>
+             <p>silviachoqueduran5@gmail.com</p>
+         </div>
+     </div>
+     <p style="margin-top: 2rem;">Comunícate con nosotros para obtener información sobre clases, talleres y entrenamientos.</p>
+ </section>
+ <footer>
+     <p>🏀 Técnicas y Estrategias de Baloncesto — Proyecto de Informática</p>
+     <p>Sucre, Bolivia | © 2026 Todos los derechos reservados</p>
+ </footer>
+ <script>

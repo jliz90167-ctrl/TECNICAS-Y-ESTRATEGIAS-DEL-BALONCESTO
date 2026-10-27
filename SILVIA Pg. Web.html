@@ -1,0 +1,1209 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basket Academy - Proyecto de Innovación</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#06151d;
+    color:white;
+}
+
+/* =========================
+   PANTALLAS
+========================= */
+
+.pantalla{
+    min-height:100vh;
+    padding:35px 6%;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 85% 35%, rgba(244,123,32,.16), transparent 25%),
+        #06151d;
+}
+
+/* =========================
+   BARRA SUPERIOR
+========================= */
+
+.header{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #23414d;
+    margin-bottom:35px;
+}
+
+.logo-mini{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:23px;
+    font-weight:bold;
+}
+
+.logo-mini span{
+    background:#f47b20;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+}
+
+.numero{
+    color:#f47b20;
+    font-weight:bold;
+}
+
+/* =========================
+   LOGO GRANDE
+========================= */
+
+.logo{
+    width:210px;
+    height:210px;
+    border-radius:50%;
+    background:#f47b20;
+    border:8px solid #111820;
+    margin:auto;
+    position:relative;
+    box-shadow:0 0 45px rgba(244,123,32,.25);
+}
+
+.logo:before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    width:7px;
+    height:194px;
+    background:#111820;
+    transform:translateX(-50%);
+    border-radius:10px;
+}
+
+.logo:after{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:0;
+    width:194px;
+    height:7px;
+    background:#111820;
+    transform:translateY(-50%);
+    border-radius:10px;
+}
+
+/* =========================
+   PORTADA
+========================= */
+
+.portada{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    min-height:75vh;
+}
+
+.texto-portada{
+    width:55%;
+}
+
+.texto-portada .pequeno{
+    color:#f47b20;
+    font-weight:bold;
+    font-size:22px;
+    letter-spacing:2px;
+    margin-bottom:20px;
+}
+
+.texto-portada h1{
+    font-size:72px;
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.texto-portada p{
+    font-size:23px;
+    color:#c7d5da;
+    line-height:1.5;
+    max-width:650px;
+}
+
+.logo-grande{
+    width:40%;
+    text-align:center;
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.boton{
+    display:inline-block;
+    margin-top:35px;
+    padding:18px 38px;
+    background:#f47b20;
+    color:white;
+    text-decoration:none;
+    border-radius:35px;
+    font-weight:bold;
+    font-size:18px;
+    transition:.3s;
+    box-shadow:0 8px 25px rgba(244,123,32,.2);
+}
+
+.boton:hover{
+    transform:translateY(-4px);
+    background:#ff913b;
+}
+
+.boton-secundario{
+    background:#123746;
+    margin-left:10px;
+}
+
+/* =========================
+   TITULOS
+========================= */
+
+.titulo{
+    font-size:48px;
+    margin-bottom:12px;
+}
+
+.subtitulo{
+    color:#b9cbd2;
+    font-size:21px;
+    margin-bottom:35px;
+}
+
+/* =========================
+   BIENVENIDA
+========================= */
+
+.bienvenida{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+    min-height:65vh;
+}
+
+.panel{
+    background:#0b2a36;
+    border:1px solid #1d4655;
+    border-radius:28px;
+    padding:40px;
+}
+
+.panel h2{
+    color:#f47b20;
+    margin-bottom:20px;
+}
+
+.lista{
+    margin-top:25px;
+}
+
+.lista div{
+    background:#123746;
+    padding:15px 20px;
+    border-radius:15px;
+    margin:10px 0;
+}
+
+/* =========================
+   MODULOS
+========================= */
+
+.modulos{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    margin-top:35px;
+}
+
+.tarjeta{
+    background:#0b2a36;
+    border:1px solid #1d4655;
+    border-radius:25px;
+    padding:28px;
+    min-height:150px;
+    transition:.3s;
+}
+
+.tarjeta:hover{
+    transform:translateY(-5px);
+    border-color:#f47b20;
+}
+
+.tarjeta .icono{
+    font-size:38px;
+    float:left;
+    margin-right:20px;
+}
+
+.tarjeta .numero-card{
+    color:#f47b20;
+    font-weight:bold;
+}
+
+.tarjeta h3{
+    font-size:24px;
+    margin:7px 0;
+}
+
+.tarjeta p{
+    color:#bdcdd2;
+}
+
+/* =========================
+   FUNDAMENTOS
+========================= */
+
+.tres-columnas{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    margin-top:50px;
+}
+
+.fundamento{
+    background:#0b2a36;
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    min-height:310px;
+    border:1px solid #1d4655;
+}
+
+.circulo-icono{
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    background:#f47b20;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin:0 auto 25px;
+    font-size:45px;
+}
+
+.fundamento h3{
+    color:#f47b20;
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.fundamento p{
+    color:#c5d2d6;
+    line-height:1.5;
+}
+
+/* =========================
+   TECNICAS
+========================= */
+
+.tecnicas-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.tecnica{
+    background:#0b2a36;
+    border-radius:22px;
+    padding:28px;
+    border:1px solid #1d4655;
+    min-height:180px;
+}
+
+.tecnica .num{
+    width:50px;
+    height:50px;
+    background:#f47b20;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+    margin-bottom:18px;
+}
+
+.tecnica h3{
+    margin-bottom:12px;
+}
+
+.tecnica p{
+    color:#c1d0d5;
+}
+
+/* =========================
+   CANCHA
+========================= */
+
+.cancha-contenedor{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:40px;
+    align-items:center;
+}
+
+.cancha{
+    height:390px;
+    background:#c98242;
+    border:7px solid #f0d0a2;
+    border-radius:20px;
+    position:relative;
+    box-shadow:0 15px 35px rgba(0,0,0,.3);
+}
+
+.cancha .linea-central{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:5px;
+    background:white;
+    transform:translateX(-50%);
+}
+
+.cancha .circulo-central{
+    position:absolute;
+    width:125px;
+    height:125px;
+    border:5px solid white;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+.zona{
+    position:absolute;
+    top:105px;
+    width:120px;
+    height:170px;
+    border:5px solid white;
+}
+
+.zona.izquierda{
+    left:0;
+}
+
+.zona.derecha{
+    right:0;
+}
+
+.info-cancha{
+    display:grid;
+    gap:15px;
+}
+
+.info-cancha div{
+    background:#0b2a36;
+    padding:20px;
+    border-radius:17px;
+    border-left:5px solid #f47b20;
+}
+
+.info-cancha h3{
+    color:#f47b20;
+    margin-bottom:6px;
+}
+
+/* =========================
+   ESTRATEGIAS
+========================= */
+
+.estrategias{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.estrategia{
+    background:#0b2a36;
+    padding:35px;
+    border-radius:25px;
+    border:1px solid #1d4655;
+}
+
+.estrategia h3{
+    color:#f47b20;
+    font-size:27px;
+    margin-bottom:15px;
+}
+
+.estrategia p{
+    color:#d0dce0;
+    font-size:18px;
+    line-height:1.5;
+}
+
+/* =========================
+   EVALUACION
+========================= */
+
+.pregunta{
+    background:#0b2a36;
+    border:1px solid #1d4655;
+    border-radius:25px;
+    padding:30px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.pregunta h2{
+    font-size:25px;
+    margin-bottom:25px;
+}
+
+.opciones{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.opcion{
+    display:block;
+    padding:18px;
+    background:#123746;
+    color:white;
+    text-decoration:none;
+    border-radius:15px;
+    border:2px solid transparent;
+    transition:.3s;
+}
+
+.opcion:hover{
+    border-color:#f47b20;
+    background:#174656;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    text-align:center;
+    min-height:70vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+
+.trofeo{
+    font-size:100px;
+    margin-bottom:20px;
+}
+
+.final h1{
+    font-size:55px;
+    color:#f47b20;
+}
+
+.final p{
+    font-size:23px;
+    color:#c9d6da;
+    margin-top:20px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .portada,
+    .bienvenida,
+    .cancha-contenedor{
+        grid-template-columns:1fr;
+        display:grid;
+    }
+
+    .texto-portada{
+        width:100%;
+    }
+
+    .texto-portada h1{
+        font-size:50px;
+    }
+
+    .logo-grande{
+        width:100%;
+    }
+
+    .modulos,
+    .tres-columnas,
+    .tecnicas-grid,
+    .estrategias,
+    .opciones{
+        grid-template-columns:1fr;
+    }
+
+    .titulo{
+        font-size:36px;
+    }
+
+    .cancha{
+        height:300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     1. PORTADA
+====================================================== -->
+
+<section class="pantalla" id="entrada">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">01 / 09</div>
+</div>
+
+<div class="portada">
+
+    <div class="texto-portada">
+
+        <div class="pequeno">
+            PROYECTO DE INNOVACIÓN
+        </div>
+
+        <h1>BALONCESTO</h1>
+
+        <p>
+            Desarrollo de una aplicación móvil para el aprendizaje
+            de técnicas y estrategias del baloncesto.
+        </p>
+
+        <a href="#inicio" class="boton">
+            INGRESAR →
+        </a>
+
+    </div>
+
+    <div class="logo-grande">
+
+        <div class="logo"></div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     2. INICIO
+====================================================== -->
+
+<section class="pantalla" id="inicio">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">02 / 09</div>
+</div>
+
+<div class="bienvenida">
+
+    <div>
+
+        <h1 class="titulo">
+            ¡Bienvenido al aprendizaje!
+        </h1>
+
+        <p class="subtitulo">
+            Descubre lo básico del baloncesto de una manera fácil,
+            dinámica y divertida.
+        </p>
+
+        <a href="#modulos" class="boton">
+            COMENZAR →
+        </a>
+
+    </div>
+
+    <div class="panel">
+
+        <h2>¿Qué aprenderás?</h2>
+
+        <div class="lista">
+
+            <div>🏀 Fundamentos del baloncesto</div>
+
+            <div>⛹️ Técnicas básicas</div>
+
+            <div>🎯 Estrategias de juego</div>
+
+            <div>🏟️ Partes de la cancha</div>
+
+            <div>📝 Evaluación final</div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     3. MODULOS
+====================================================== -->
+
+<section class="pantalla" id="modulos">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">03 / 09</div>
+</div>
+
+<h1 class="titulo">
+    Módulos de aprendizaje
+</h1>
+
+<p class="subtitulo">
+    Selecciona un tema para comenzar.
+</p>
+
+<div class="modulos">
+
+    <div class="tarjeta">
+
+        <div class="icono">🏀</div>
+
+        <div class="numero-card">01</div>
+
+        <h3>FUNDAMENTOS</h3>
+
+        <p>
+            Bote, pase y tiro.
+        </p>
+
+        <a href="#fundamentos" class="boton">
+            VER →
+        </a>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <div class="icono">⛹️</div>
+
+        <div class="numero-card">02</div>
+
+        <h3>TÉCNICAS</h3>
+
+        <p>
+            Aprende los principales movimientos.
+        </p>
+
+        <a href="#tecnicas" class="boton">
+            VER →
+        </a>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <div class="icono">🎯</div>
+
+        <div class="numero-card">03</div>
+
+        <h3>ESTRATEGIAS</h3>
+
+        <p>
+            Ataque, defensa y trabajo en equipo.
+        </p>
+
+        <a href="#estrategias" class="boton">
+            VER →
+        </a>
+
+    </div>
+
+
+    <div class="tarjeta">
+
+        <div class="icono">🏟️</div>
+
+        <div class="numero-card">04</div>
+
+        <h3>CANCHA</h3>
+
+        <p>
+            Conoce sus partes principales.
+        </p>
+
+        <a href="#cancha" class="boton">
+            VER →
+        </a>
+
+    </div>
+
+</div>
+
+<a href="#fundamentos" class="boton">
+    SIGUIENTE →
+</a>
+
+</section>
+
+
+<!-- =====================================================
+     4. FUNDAMENTOS
+====================================================== -->
+
+<section class="pantalla" id="fundamentos">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">04 / 09</div>
+</div>
+
+<h1 class="titulo">
+    Fundamentos del baloncesto
+</h1>
+
+<p class="subtitulo">
+    Son las habilidades básicas que todo jugador debe aprender.
+</p>
+
+<div class="tres-columnas">
+
+    <div class="fundamento">
+
+        <div class="circulo-icono">
+            🏀
+        </div>
+
+        <h3>BOTE</h3>
+
+        <p>
+            Permite avanzar y controlar el balón mientras
+            te desplazas por la cancha.
+        </p>
+
+    </div>
+
+
+    <div class="fundamento">
+
+        <div class="circulo-icono">
+            🤲
+        </div>
+
+        <h3>PASE</h3>
+
+        <p>
+            Sirve para compartir el balón y conectar
+            con los compañeros del equipo.
+        </p>
+
+    </div>
+
+
+    <div class="fundamento">
+
+        <div class="circulo-icono">
+            🎯
+        </div>
+
+        <h3>TIRO</h3>
+
+        <p>
+            Es la acción que permite lanzar el balón
+            hacia la canasta para conseguir puntos.
+        </p>
+
+    </div>
+
+</div>
+
+<a href="#tecnicas" class="boton">
+    SIGUIENTE →
+</a>
+
+</section>
+
+
+<!-- =====================================================
+     5. TECNICAS
+====================================================== -->
+
+<section class="pantalla" id="tecnicas">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">05 / 09</div>
+</div>
+
+<h1 class="titulo">
+    Técnicas para mejorar tu juego
+</h1>
+
+<p class="subtitulo">
+    Practica cada movimiento para mejorar tus habilidades.
+</p>
+
+<div class="tecnicas-grid">
+
+    <div class="tecnica">
+        <div class="num">01</div>
+        <h3>Drible</h3>
+        <p>
+            Controlar el balón mientras se avanza.
+        </p>
+    </div>
+
+    <div class="tecnica">
+        <div class="num">02</div>
+        <h3>Pase de pecho</h3>
+        <p>
+            Pase rápido y preciso hacia un compañero.
+        </p>
+    </div>
+
+    <div class="tecnica">
+        <div class="num">03</div>
+        <h3>Entrada a canasta</h3>
+        <p>
+            Movimiento para acercarse y lanzar.
+        </p>
+    </div>
+
+    <div class="tecnica">
+        <div class="num">04</div>
+        <h3>Defensa</h3>
+        <p>
+            Impedir que el equipo contrario avance.
+        </p>
+    </div>
+
+    <div class="tecnica">
+        <div class="num">05</div>
+        <h3>Rebote</h3>
+        <p>
+            Recuperar el balón después de un lanzamiento.
+        </p>
+    </div>
+
+    <div class="tecnica">
+        <div class="num">06</div>
+        <h3>Lanzamiento</h3>
+        <p>
+            Lanzar el balón buscando conseguir puntos.
+        </p>
+    </div>
+
+</div>
+
+<a href="#cancha" class="boton">
+    CONOCER LA CANCHA →
+</a>
+
+</section>
+
+
+<!-- =====================================================
+     6. CANCHA
+====================================================== -->
+
+<section class="pantalla" id="cancha">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">06 / 09</div>
+</div>
+
+<h1 class="titulo">
+    Conoce la cancha
+</h1>
+
+<p class="subtitulo">
+    Identifica las principales partes de una cancha de baloncesto.
+</p>
+
+<div class="cancha-contenedor">
+
+    <div class="cancha">
+
+        <div class="linea-central"></div>
+
+        <div class="circulo-central"></div>
+
+        <div class="zona izquierda"></div>
+
+        <div class="zona derecha"></div>
+
+    </div>
+
+
+    <div class="info-cancha">
+
+        <div>
+            <h3>Línea central</h3>
+            <p>
+                Divide la cancha en dos partes.
+            </p>
+        </div>
+
+        <div>
+            <h3>Círculo central</h3>
+            <p>
+                Se encuentra en el centro de la cancha.
+            </p>
+        </div>
+
+        <div>
+            <h3>Zona</h3>
+            <p>
+                Área cercana a cada canasta.
+            </p>
+        </div>
+
+        <div>
+            <h3>Canasta</h3>
+            <p>
+                Objetivo donde se busca anotar.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<a href="#estrategias" class="boton">
+    SIGUIENTE →
+</a>
+
+</section>
+
+
+<!-- =====================================================
+     7. ESTRATEGIAS
+====================================================== -->
+
+<section class="pantalla" id="estrategias">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">07 / 09</div>
+</div>
+
+<h1 class="titulo">
+    Estrategias de juego
+</h1>
+
+<p class="subtitulo">
+    Aprende a tomar mejores decisiones durante un partido.
+</p>
+
+<div class="estrategias">
+
+    <div class="estrategia">
+
+        <h3>ATAQUE</h3>
+
+        <p>
+            Moverse, pasar el balón y buscar espacios
+            para conseguir una oportunidad de lanzamiento.
+        </p>
+
+    </div>
+
+
+    <div class="estrategia">
+
+        <h3>DEFENSA</h3>
+
+        <p>
+            Marcar a los jugadores contrarios y proteger
+            nuestra canasta.
+        </p>
+
+    </div>
+
+
+    <div class="estrategia">
+
+        <h3>TRABAJO EN EQUIPO</h3>
+
+        <p>
+            Cooperar y comunicarse para conseguir
+            mejores resultados durante el juego.
+        </p>
+
+    </div>
+
+
+    <div class="estrategia">
+
+        <h3>TOMA DE DECISIONES</h3>
+
+        <p>
+            Elegir rápidamente la mejor opción según
+            la situación del partido.
+        </p>
+
+    </div>
+
+</div>
+
+<a href="#evaluacion" class="boton">
+    IR A EVALUACIÓN →
+</a>
+
+</section>
+
+
+<!-- =====================================================
+     8. EVALUACION
+====================================================== -->
+
+<section class="pantalla" id="evaluacion">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">08 / 09</div>
+</div>
+
+<h1 class="titulo">
+    Evaluación
+</h1>
+
+<p class="subtitulo">
+    Selecciona la respuesta que consideres correcta.
+</p>
+
+
+<div class="pregunta">
+
+<h2>
+1. ¿Cuál es una técnica básica del baloncesto?
+</h2>
+
+<div class="opciones">
+
+<a href="#pregunta2" class="opcion">
+A. Voleibol
+</a>
+
+<a href="#pregunta2" class="opcion">
+B. Drible
+</a>
+
+<a href="#pregunta2" class="opcion">
+C. Natación
+</a>
+
+<a href="#pregunta2" class="opcion">
+D. Ciclismo
+</a>
+
+</div>
+
+</div>
+
+<a href="#pregunta2" class="boton">
+    SIGUIENTE PREGUNTA →
+</a>
+
+</section>
+
+
+<!-- =====================================================
+     PREGUNTA 2
+====================================================== -->
+
+<section class="pantalla" id="pregunta2">
+
+<div class="header">
+    <div class="logo-mini">
+        <span>🏀</span>
+        BASKET ACADEMY
+    </div>
+
+    <div class="numero">08 / 09</div>
+</div>
+
+<div class="pregunta">
+
+<h2>
+2. ¿Cuál es el objetivo principal del baloncesto?
+</h2>
+
+<div class="opciones">
+
+<a href="#pregunta3" class="opcion">
+A. Anotar puntos
+</a>
+
+<a href="#pregunta3" class="opcion">
+B. Correr sin balón
+</a>
+
+<a href="#pregunta3" class="opcion">
+C. Salir de la cancha
